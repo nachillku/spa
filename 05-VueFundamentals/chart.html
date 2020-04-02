@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Chart</title>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+
 </head>
+
 <body>
+
+  <div id="app"></div>
+  <canvas id="myChart"></canvas>
+
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        films: [
-          {
+        films: [{
             language: 'Python',
             popularity: 25.95
           },
@@ -29,9 +40,35 @@
             language: 'Php',
             popularity: 7.37
           }
-        ] 
+        ]
       }
     });
+
+    let datalng = [];
+    let datappt = [];
+
+    for (i = 0; i < app.films.length; i++) {
+      datalng[i] = app.films[i].language;
+      datappt[i] = app.films[i].popularity;
+    }
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: datalng,
+        datasets: [{
+          label: 'popularity',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(54, 162, 235)',
+          data: datappt,
+          borderWidth: 5
+        }]
+      },
+      options: {}
+    });
+    console.log(app.films[0].language)
   </script>
 </body>
+
 </html>

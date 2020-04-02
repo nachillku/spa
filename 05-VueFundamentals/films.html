@@ -1,15 +1,57 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    html {
+      font-size: 25px;
+    }
+
+    table,
+    td,
+    th {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+
+    th {
+      text-align: left;
+      width: 20%;
+    }
+
+    table {
+      width: 75%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
 </head>
+
 <body>
+  <div id="app">
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Director</th>
+        <th>Budget</th>
+      </tr>
+      <tr v-for="item in films">
+        <td>{{item.title}}</td>
+        <td>{{item.year}}</td>
+        <td>{{item.director}}</td>
+        <td>${{item.budget}}</td>
+
+      </tr>
+    </table>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        films: [
-          {
+        films: [{
             title: 'Avatar',
             year: 2009,
             director: 'James Cameron',
@@ -33,10 +75,10 @@
             director: 'King Vidor',
             budget: 6000000
           }
-        ] 
-        }
+        ]
       }
     });
   </script>
 </body>
+
 </html>

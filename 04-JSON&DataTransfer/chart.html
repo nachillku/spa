@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chart</title>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+
+<body>
+    <p id="test"></p>
+    <canvas id="myChart"></canvas>
+
+    <script>
+        let Arrdate = [];
+        let Arrprice = [];
+
+        function getData(url) {
+            return fetch('https://api.nbp.pl/api/cenyzlota/last/10')
+                .then(response => response.json())
+                .then(result => result);
+
+        }
+
+        getData(URL)
+            .then((data) => {
+                for (i = 0; i < 10; i++) {
+                    Arrdate[i] = data[i].data;
+                    Arrprice[i] = data[i].cena;
+                }
+            });
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Arrdate,
+                datasets: [{
+                    label: 'gold',
+                    backgroundColor: 'rgb(255, 215, 0)',
+                    borderColor: 'rgb(0, 0, 0)',
+                    data: Arrprice,
+                    borderWidth: 1
+                }]
+            },
+            options: {}
+        });
+    </script>
+
+</body>
+
+</html>

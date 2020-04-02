@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    html {
+      font-size: 25px;
+      line-height: 0.2;
+    }
+
+    #app {
+      border: 1px solid black;
+      margin: 0 auto;
+      padding: 50px;
+      width: 25%;
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
+  <div id="app">
+    <p><b>{{company | uppercase}}</b></p>
+    <p>{{address}}</p>
+    <p>{{postcode + " " + city}}</p>
+    <p>tel. {{landline + ", " + mobile}}</p>
+    <p><a :href="web">{{web}}</a></p>
+  </div>
   <script>
+    Vue.filter('uppercase', function (value) {
+      return value.toUpperCase()
+    })
+
     var app = new Vue({
       el: '#app',
       data: {
@@ -20,4 +47,5 @@
   </script>
 
 </body>
+
 </html>

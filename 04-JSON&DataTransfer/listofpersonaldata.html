@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Personal Data</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <input type="button" value="Display personal data" onclick="connect()">
+    <p id="personalData"></p>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <script>
+        function connect() {
+            $.getJSON("people.json", function (json) {
+                for (i = 0; i < json.length; i++) {
+                    document.getElementById("personalData").innerHTML += i + 1 + ". " + json[i].name + " " +
+                        json[i].surname + ", " + json[i].country + "<br>";
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

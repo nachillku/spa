@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Currency Exchange Rate</title>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        html {
+            font-size: 25px;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        th {
+            text-align: left;
+            width: 20%;
+        }
+
+        table {
+            width: 75%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <th>Currency</th>
+                <th>Code</th>
+                <th>Mid</th>
+            </tr>
+            <tr v-for="item in datatest">
+                <td>{{item.currency}}</td>
+                <td>{{item.code}}</td>
+                <td>{{item.mid}}</td>
+            </tr>
+        </table>
+    </div>
+    <div id="test"></div>
+
+    <p id="eur"></p>
+    <p id="usd"></p>
+    <p id="gbp"></p>
+
+    <script>
+        let datatest = [];
+
+        fetch('https://api.nbp.pl/api/exchangerates/tables/a/')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                for (i = 0; i < data[0].rates.length; i++) {
+                    datatest.push(data[0].rates[i]);
+                }
+                console.log(datatest);
+            });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                datatest
+            }
+        });
+    </script>
+
+</body>
+
+</html>

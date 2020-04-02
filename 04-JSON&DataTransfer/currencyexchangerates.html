@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Currency Exchange Rate</title>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+
+	<p id="eur"></p>
+	<p id="usd"></p>
+	<p id="gbp"></p>
+
+	<script>
+		fetch('http://api.nbp.pl/api/exchangerates/rates/a/eur/?format=json')
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => {
+				console.log(data.rates[0].mid);
+				document.getElementById("eur").innerHTML = "Kurs Euro: " + data.rates[0].mid;
+			});
+		fetch('http://api.nbp.pl/api/exchangerates/rates/a/usd/?format=json')
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => {
+				console.log(data.rates[0].mid);
+				document.getElementById("usd").innerHTML = "Kurs Dolara Amerykańskiego: " + data.rates[0].mid;
+			});
+		fetch('http://api.nbp.pl/api/exchangerates/rates/a/gbp/?format=json')
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => {
+				console.log(data.rates[0].mid);
+				document.getElementById("gbp").innerHTML = "Kurs Funta Brytyjskiego: " + data.rates[0].mid;
+			});
+		// };
+	</script>
+
+</body>
+
+</html>
