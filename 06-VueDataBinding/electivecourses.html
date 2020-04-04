@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id='ecourse'>
+        <input type="checkbox" id="comarch" value="Comarch Business Intelligence w praktyce zarządzania"
+            v-model="chosenLectures">
+        <label for="comarch">Comarch Business Intelligence w praktyce zarządzania</label><br>
+        <input type="checkbox" id="spa" value="Programowanie aplikacji webowych SPA" v-model="chosenLectures">
+        <label for="spa">Programowanie aplikacji webowych SPA</label><br>
+        <input type="checkbox" id="si" value="Programowanie sztucznej inteligencji" v-model="chosenLectures">
+        <label for="si">Programowanie sztucznej inteligencji</label><br>
+        <input type="checkbox" id="ps" value="Psychologia" v-model="chosenLectures">
+        <label for="ps">Psychologia</label><br>
+        <input type="checkbox" id="sim" value="System informacji marketingowej w przedsiębiorstwie"
+            v-model="chosenLectures">
+        <label for="sim">System informacji marketingowej w przedsiębiorstwie</label><br>
+        <span>Wybrane przedmioty: {{ chosenLectures }}</span>
+    </div>
+    <script>
+        new Vue({
+            el: '#ecourse',
+            data: {
+                chosenLectures: []
+            }
+        })
+    </script>
+
+</body>
+
+</html>

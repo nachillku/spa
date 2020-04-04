@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <form id="demo">
+            <span>Book title:</span><br>
+            <input type="text" v-model="title"><br>
+            <span>Author's name:</span><br>
+            <input type="text" v-model="name"><br>
+            <span>Author's surname:</span><br>
+            <input type="text" v-model="surname"><br>
+            <input type="button" v-on:click="viewData" value="Zapisz">
+        </form>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#demo',
+            data: {
+                title: '',
+                name: '',
+                surname: ''
+            },
+            methods: {
+                viewData: function () {
+                    console.log(this.name + " " + this.surname + " " + this.title );
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

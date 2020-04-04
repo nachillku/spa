@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Curriculum vitae</h1>
+
+        <span>Imię: </span><input type="text" v-model="name"><br><br>
+        <span>Nazwisko: </span><input type="text" v-model="surname"><br><br>
+        <span>Wiek: </span><input type="number" v-model="age"><br><br>
+
+
+        <span>Płeć: </span>
+        <input type="radio" id="man" value="Mężczyzna" v-model="sex">
+        <label for="one">Mężczyzna</label>
+        <input type="radio" id="woman" value="Kobieta" v-model="sex">
+        <label for="woman">Kobieta</label><br><br>
+
+
+        <span>Wykształcenie </span>
+        <select v-model="education">
+            <option>brak</option>
+            <option>podstawowe</option>
+            <option>średnie</option>
+            <option>wyższe</option>
+        </select><br><br>
+
+
+        <span>Umiejętności </span><br>
+        <select v-model="skills" multiple>
+            <option>obsługa komputera</option>
+            <option>prawo jazdy</option>
+            <option>kreatywność</option>
+            <option>praca w zespole</option>
+        </select><br><br>
+
+        <input type="button" @click="persist" value="ZAPISZ">
+        <input type="button" @click="mounted" value="ODCZYTAJ"><br><br>
+
+        <span>{{ name + " " + surname + ", " + age }}</span><br>
+        <span>Płeć: {{ sex }}</span><br>
+        <span>Wykształcenie: {{ education }}</span><br>
+        <span>Umiejętności: {{ skills }}</span><br>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                surname: '',
+                age: '',
+                sex: '',
+                education: [],
+                skills: []
+            },
+            methods: {
+                persist() {
+                    localStorage.name = this.name;
+
+                    localStorage.surname = this.surname;
+
+                    localStorage.age = this.age;
+
+                    localStorage.sex = this.sex;
+
+                    localStorage.education = this.education;
+
+                    localStorage.skills = this.skills;
+                },
+                mounted() {
+                if (localStorage.name) {
+                    this.name = localStorage.name;
+                }
+                if (localStorage.surname) {
+                    this.surname = localStorage.surname;
+                }
+                if (localStorage.age) {
+                    this.age = localStorage.age;
+
+                }
+                if (localStorage.sex) {
+                    this.sex = localStorage.sex;
+                }
+                if (localStorage.education) {
+                    this.education = localStorage.education;
+                }
+                if (localStorage.skills) {
+                    this.skills = localStorage.skills;
+                }
+            },
+            }
+        });
+    </script>
+</body>
+
+</html>

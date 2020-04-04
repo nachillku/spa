@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
   <div id="app">
     <span>Your name:</span>
-    <input type="text" v-model="name">  
+    <input type="text" v-model="name" v-on:keyup="changeName">
+    <p id="changename"></p>
   </div>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        name: ''
+        name: 'Michael'
+      },
+      methods: {
+        changeName: function ($event) {
+          document.getElementById("changename").innerHTML = "Witaj " + this.name + "!";
+        }
       }
     });
+    //console.log((document.getElementsByTagName("input")[0].value))
+    //console.log((document.getElementsByTagName("input")[0].value)="hm")
   </script>
 
 </body>
+
 </html>
