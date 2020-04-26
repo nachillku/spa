@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="components-demo">
+        <h2>Architektura von Neumanna</h2>
+        <load-data v-for="item in elements" v-bind:data="item" v-bind:key="item"></load-data>
+    </div>
+
+    <script>
+        Vue.component('load-data', {
+            template: '<div>{{data}}(10) = {{decbin()}}(2)</div>',
+            props: ['data'],
+            methods: {
+                decbin: function () {
+                    var number = this.data;
+                    return (parseInt(number).toString(2));
+                }
+            }
+        })
+        new Vue({
+            el: '#components-demo',
+            data: {
+                elements: ['8', '170', '204', '3855']
+            }
+        })
+    </script>
+</body>
+
+</html>

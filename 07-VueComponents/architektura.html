@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="components-demo">
+        <h2>Architektura von Neumanna</h2>
+        <load-data v-for="item in elements" v-bind:data="item" v-bind:key="item"></load-data>
+    </div>
+
+    <script>
+        Vue.component('load-data', {
+            template: '<h3>{{data}}</h3>',
+            props: ['data']
+        })
+        new Vue({
+            el: '#components-demo',
+            data: {
+                elements: ['pamięć komputerowa', 'jednostka sterująca', 'jednostka arytmetyczno-logiczna',
+                    'urządzenia wejścia/wyjścia'
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

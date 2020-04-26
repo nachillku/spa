@@ -6,19 +6,16 @@
 </head>
 
 <body>
-
     <div id="components-demo">
-        <load-data></load-data>
+        <load-data movie="Super 8 J.J. Abrams 2011"></load-data>
+        <load-data movie="I Lost My Body Jérémy Clapin 2019"></load-data>
+        <load-data movie="The King David Michôd 2019"></load-data>
     </div>
 
     <script>
         Vue.component('load-data', {
-            template: `
-                <div>
-                <h1> Cracow University of Economics </h1> 
-                <p> 31-510 Kraków, Rakowicka 27, POLAND </p>
-                </div>
-            `,
+            props: ['movie'],
+            template: '<h3> {{ movie }} </h3>'
         })
         new Vue({
             el: '#components-demo'
